@@ -1,0 +1,24 @@
+* {
+    box-sizing: content-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Cambria", serif;
+    font-size: 16px;
+}
+
+/* h1 {
+    font-size: 17px;
+}
+
+h2, h3 {
+    font-size: 16px;
+} */
+
+.row {
+    display: flex;
+    flex: row;
+    align-items: center;
+}

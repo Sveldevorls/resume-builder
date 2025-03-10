@@ -1,0 +1,12 @@
+.Skills{
+    >.title {
+        border-bottom: 1.5px solid black;
+        padding-bottom: 0.1lh;
+        margin-bottom: 0.2lh;
+    }
+
+    ul {
+        padding-left: 1em;
+        list-style-type: none;
+    }
+}

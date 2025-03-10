@@ -1,0 +1,17 @@
+.Info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    >.row {
+        gap: 2em;
+    }
+
+    span + span::before {
+        content: "|";
+        position: relative;
+        left: -1em;
+    }
+}
+
+

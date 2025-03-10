@@ -1,0 +1,27 @@
+.Experience{
+    >.title {
+        border-bottom: 1.5px solid black;
+        padding-bottom: 0.1lh;
+        margin-bottom: 0.2lh;
+    }
+
+    >.content {
+        display: flex;
+        flex-direction: column;
+        padding-left: 1em;
+
+        .row {
+            span:nth-child(2) {
+                margin-left: auto;
+            }
+        }
+
+        +.content {
+            margin-top: 1lh;
+        }
+    }
+
+    ul {
+        margin-left: 2em;
+    }
+}

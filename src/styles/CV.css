@@ -1,0 +1,13 @@
+.CV {
+    /* A4 size */
+    width: 21cm;
+    height: 29.7cm;
+    padding: 1in;
+
+    /* Debug */
+    border: 3px solid black;
+
+    >div + div {
+        margin-top: 1lh;
+    }
+}
