@@ -7,7 +7,7 @@ import {
   defaultProjects,
   defaultSkills
 } from './components/DefaultResume'
-import CV from './components/CV';
+import CV from './components/CV/CV';
 
 export default function App() { 
   const [info, setInfo] = useState(localStorage.getItem("info") || defaultInfo);
