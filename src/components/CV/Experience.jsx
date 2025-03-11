@@ -10,17 +10,15 @@ export default function Experience({ experience }) {
 }
 
 function generateExperienceDiv(experience) {
-    const startDate = new Date(experience.start);
-    const endDate = experience.end == "Present" ? "Present" : new Date(experience.end);
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     return (
         <div className="content" key={experience.id}>
             <div className="row">
                 <h3>{experience.company}</h3>
-                {endDate == "Present" ?
-                    <span>{months[startDate.getMonth()]} {startDate.getFullYear()} – {endDate}</span> :
-                    <span>{months[startDate.getMonth()]} {startDate.getFullYear()} – {months[endDate.getMonth()]} {endDate.getFullYear()}</span>}
+                {experience.isCurrentlyEmployed ?
+                    <span>{months[experience.startMonth - 1]} {experience.startYear} – Present</span> :
+                    <span>{months[experience.startMonth - 1]} {experience.startYear} – {months[experience.endMonth - 1]} {experience.endYear}</span>}
             </div>
             <div className="row">
                 <span>{experience.title}</span>

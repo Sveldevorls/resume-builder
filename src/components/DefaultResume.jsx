@@ -11,8 +11,10 @@ export const defaultEducation = [
         "school": "University of Sample Text",
         "location": "Sample city",
         "degree": "Bachelor of Arts in Examplology",
-        "start": "2018-06",
-        "end": "2022-06",
+        "startMonth": 6,
+        "startYear": 2018,
+        "endMonth": 6,
+        "endYear": 2022,
         "extraInfo": [
             {
                 "id": crypto.randomUUID(),
@@ -28,8 +30,11 @@ export const defaultExperience = [
         "company": "Example Inc.",
         "location": "Sample city",
         "title": "Sample analysis",
-        "start": "2024",
-        "end": "Present",
+        "startMonth": 6,
+        "startYear": 2024,
+        "endMonth": null,
+        "endYear": null,
+        "isCurrentlyEmployed": true,
         "extraInfo": [
             {
                 "id": crypto.randomUUID(),
@@ -43,8 +48,11 @@ export const defaultExperience = [
         "company": "Lipsum",
         "location": "Sample city",
         "title": "Sample tester",
-        "start": "2022-06",
-        "end": "2023-12",
+        "startMonth": 6,
+        "startYear": 2022,
+        "endMonth": 12,
+        "endYear": 2023,
+        "isCurrentlyEmployed": false,
         "extraInfo": [
             {
                 "id": crypto.randomUUID(),

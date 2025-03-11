@@ -10,17 +10,16 @@ export default function Education({ education }) {
 }
 
 function generateEducationDiv(education) {
-    const startDate = new Date(education.start);
-    const endDate = new Date(education.end);
+    const now = new Date();
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     return (
         <div className="content" key={education.id}>
             <div className="row">
                 <h3>{education.school}</h3>
-                {new Date() > endDate ?
-                    <span>{months[startDate.getMonth()]} {startDate.getFullYear()} – {months[endDate.getMonth()]} {endDate.getFullYear()}</span> :
-                    <span>Expected graduation: {months[endDate.getMonth()]} {endDate.getFullYear()}</span>}
+                {education.endYear > now.getFullYear() || (education.endYear == now.getFullYear && education.endMonth - 1 > now.getMonth) ?
+                    <span>Expected graduation: {months[education.endMonth]} {education.endYear}</span> :
+                    <span>{months[education.startMonth - 1]} {education.startYear} – {months[education.endMonth - 1]} {education.endYear}</span>}
             </div>
             <div className="row">
                 <span>{education.degree}</span>
