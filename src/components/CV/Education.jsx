@@ -26,8 +26,8 @@ function generateEducationDiv(education) {
                 <span>{education.location}</span>
             </div>
             <ul>
-                {education.extraInfo.map(info => {
-                    return <li key={info.id}>{info.content}</li>
+                {education.notes.map(note => {
+                    return <li key={note.id}>{note.content}</li>
                 })}
             </ul>
         </div>

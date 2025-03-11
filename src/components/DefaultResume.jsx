@@ -15,10 +15,14 @@ export const defaultEducation = [
         "startYear": 2018,
         "endMonth": 6,
         "endYear": 2022,
-        "extraInfo": [
+        "notes": [
             {
                 "id": crypto.randomUUID(),
                 "content": "GPA 3.8",
+            },
+            {
+                "id": crypto.randomUUID(),
+                "content": "Teste",
             },
         ],
     },
@@ -35,7 +39,7 @@ export const defaultExperience = [
         "endMonth": null,
         "endYear": null,
         "isCurrentlyEmployed": true,
-        "extraInfo": [
+        "notes": [
             {
                 "id": crypto.randomUUID(),
                 "content": "Improved company efficiency by 30% by introducing analysis SOPs",
@@ -53,7 +57,7 @@ export const defaultExperience = [
         "endMonth": 12,
         "endYear": 2023,
         "isCurrentlyEmployed": false,
-        "extraInfo": [
+        "notes": [
             {
                 "id": crypto.randomUUID(),
                 "content": "Raised customer satisfaction by 50% through new sample text services",
@@ -71,7 +75,7 @@ export const defaultProjects = [
         "id": crypto.randomUUID(),
         "title": "Sample Messages",
         "techs": "Javascript, Express, Node.js, React, Passport.js, PostgreSQL, Prisma, Socke.Io",
-        "extraInfo": [
+        "notes": [
             {
                 "id": crypto.randomUUID(),
                 "content": "Developed a chat application with Node.js as the backend"

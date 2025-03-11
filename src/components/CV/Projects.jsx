@@ -15,8 +15,8 @@ function generateProjectDiv(project) {
             <h3>{project.title}</h3>
             <span>{project.techs}</span>
             <ul>
-                {project.extraInfo.map(info => {
-                    return <li key={info.id}>{info.content}</li>
+                {project.notes.map(note => {
+                    return <li key={note.id}>{note.content}</li>
                 })}
             </ul>
         </div>

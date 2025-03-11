@@ -25,8 +25,8 @@ function generateExperienceDiv(experience) {
                 <span>{experience.location}</span>
             </div>
             <ul>
-                {experience.extraInfo.map(info => {
-                    return <li key={info.id}>{info.content}</li>
+                {experience.notes.map(note => {
+                    return <li key={note.id}>{note.content}</li>
                 })}
             </ul>
         </div>
