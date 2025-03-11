@@ -8,6 +8,7 @@ import {
   defaultSkills
 } from './components/DefaultResume'
 import CV from './components/CV/CV';
+import Editor from './components/Editor/Editor';
 
 export default function App() { 
   const [info, setInfo] = useState(localStorage.getItem("info") || defaultInfo);
@@ -18,6 +19,13 @@ export default function App() {
 
   return (
     <div className="App">
+      <Editor 
+        infoState = {{info, setInfo}}
+        educationState = {{education, setEducation}}
+        experience = {{experience, setExperience}}
+        projects = {{projects, setProjects}}
+        skills = {{skills, setSkills}}
+      />
       <CV 
         info={info}
         education={education}

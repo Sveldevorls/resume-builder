@@ -9,6 +9,17 @@ body {
     font-size: 16px;
 }
 
+.App {
+    display: flex;
+    min-height: 100vh;
+    padding: 1em;
+    gap: 1em;
+
+    >div {
+        width: 45%;
+    }
+}
+
 /* h1 {
     font-size: 17px;
 }
