@@ -1,0 +1,21 @@
+.CollapsibleBlock {
+    h2 + button,
+    h3 + button {
+        margin-left: auto;
+    }
+
+    > .content {
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &.active {
+            display: inherit;
+        }
+
+        &.hidden {
+            display: none;
+        }
+    }
+}

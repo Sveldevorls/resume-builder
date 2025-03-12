@@ -1,18 +1,20 @@
 import { useState } from "react";
-import "../../styles/EditorBlock.css"
+import "../../styles/CollapsibleBlock.css"
 
-export default function EditorBlock({ title, children }) {
+export default function CollapsibleBlock({ title, children }) {
     const [active, setActive] = useState(true);
 
     return (
-        <>
+        <div className="CollapsibleBlock">
             <div className="row">
                 {title}
                 <button onClick={() => setActive(!active)}>
                     {active ? "-" : "+"}
                 </button>
             </div>
-            {active && children}
-        </>
+            <div className={"content " + (active ? "active" : "hidden")}>
+                {children}
+            </div>
+        </div>
     )
 }

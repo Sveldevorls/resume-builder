@@ -1,4 +1,4 @@
-import EditorBlock from "./EditorBlock"
+import CollapsibleBlock from "./CollapsibleBlock"
 
 export default function ExperienceEditor({ experience, experienceStateSetter }) {
     function handleNewNoteClick(entryID) {
@@ -75,11 +75,11 @@ export default function ExperienceEditor({ experience, experienceStateSetter }) 
     ];
 
     return (
-        <div id="experienceEditor">
-            <EditorBlock title={<h2>Experience</h2>} >
+        <div id="ExperienceEditor">
+            <CollapsibleBlock title={<h2>Experience</h2>} >
                 {experience.map(entry => {
                     return (
-                        <EditorBlock title={<h3>{entry.company}</h3>} key={entry.id}>
+                        <CollapsibleBlock title={<h3>{entry.company}</h3>} key={entry.id}>
                             <form data-id={entry.id} onChange={e => handleFormChange(entry.id, e.target)}>
                                 <label htmlFor={"company-" + entry.id}>Company:</label>
                                 <input type="text" id={"company-" + entry.id} name="company" defaultValue={entry.company} />
@@ -128,11 +128,11 @@ export default function ExperienceEditor({ experience, experienceStateSetter }) 
                                 )}
                             </form>
                             <button type="button" onClick={() => handleRemoveEntryClick(entry.id)}>Remove this entry</button>
-                        </EditorBlock>
+                        </CollapsibleBlock>
                     )
                 })}
                 <button onClick={handleNewEntryClick}>Add new entry</button>
-            </EditorBlock>
+            </CollapsibleBlock>
         </div>
     )
 }
