@@ -24,7 +24,7 @@ export default function App() {
         educationState = {{education, setEducation}}
         experienceState = {{experience, setExperience}}
         projectsState = {{projects, setProjects}}
-        skills = {{skills, setSkills}}
+        skillsState = {{skills, setSkills}}
       />
       <CV 
         info={info}

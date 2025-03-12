@@ -1,10 +1,11 @@
 import InfoEditor from "./InfoEditor"
 import EducationEditor from "./EducationEditor"
 import ExperienceEditor from "./ExperienceEditor"
-import ProjectEditor from "./ProjectsEditor"
+import ProjectsEditor from "./ProjectsEditor"
+import SkillsEditor from "./SkillsEditor"
 import "../../styles/Editor.css"
 
-export default function Editor({ infoState, educationState, experienceState, projectsState }) {
+export default function Editor({ infoState, educationState, experienceState, projectsState, skillsState }) {
     return (
         <div className="Editor">
             <InfoEditor
@@ -19,9 +20,13 @@ export default function Editor({ infoState, educationState, experienceState, pro
                 experience = {experienceState.experience}
                 experienceStateSetter={experienceState.setExperience}
             />
-            <ProjectEditor 
+            <ProjectsEditor 
                 projects = {projectsState.projects}
                 projectsStateSetter={projectsState.setProjects}
+            />
+            <SkillsEditor 
+                skills = {skillsState.skills}
+                skillsStateSetter={skillsState.setSkills}
             />
         </div>
     )
