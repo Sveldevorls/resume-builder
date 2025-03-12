@@ -23,7 +23,7 @@ export default function App() {
         infoState = {{info, setInfo}}
         educationState = {{education, setEducation}}
         experienceState = {{experience, setExperience}}
-        projects = {{projects, setProjects}}
+        projectsState = {{projects, setProjects}}
         skills = {{skills, setSkills}}
       />
       <CV 
