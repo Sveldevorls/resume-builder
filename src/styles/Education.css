@@ -15,6 +15,10 @@
                 margin-left: auto;
             }
         }
+
+        +.content {
+            margin-top: 1lh;
+        }
     }
 
     ul {

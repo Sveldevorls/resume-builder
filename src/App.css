@@ -30,6 +30,6 @@ h2, h3 {
 
 .row {
     display: flex;
-    flex: row;
+    flex-direction: row;
     align-items: center;
 }

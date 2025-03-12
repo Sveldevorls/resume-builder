@@ -7,7 +7,7 @@ export default function EditorBlock({ title, children }) {
     return (
         <>
             <div className="row">
-                <h2>{title}</h2>
+                {title}
                 <button onClick={() => setActive(!active)}>
                     {active ? "-" : "+"}
                 </button>
