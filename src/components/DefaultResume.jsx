@@ -36,8 +36,8 @@ export const defaultExperience = [
         "title": "Sample analysis",
         "startMonth": 6,
         "startYear": 2024,
-        "endMonth": null,
-        "endYear": null,
+        "endMonth": 6,
+        "endYear": 2025,
         "isCurrentlyEmployed": true,
         "notes": [
             {

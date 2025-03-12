@@ -22,7 +22,7 @@ export default function App() {
       <Editor 
         infoState = {{info, setInfo}}
         educationState = {{education, setEducation}}
-        experience = {{experience, setExperience}}
+        experienceState = {{experience, setExperience}}
         projects = {{projects, setProjects}}
         skills = {{skills, setSkills}}
       />
