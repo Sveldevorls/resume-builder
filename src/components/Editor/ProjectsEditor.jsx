@@ -62,9 +62,9 @@ export default function ProjectsEditor({ projects, projectsStateSetter }) {
     return (
         <div id="ProjectsEditor">
             <CollapsibleBlock title={<h2>Projects</h2>} >
-                {projects.map(entry => {
+                {projects.map((entry, index) => {
                     return (
-                        <CollapsibleBlock title={<h3>{entry.title}</h3>} key={entry.id}>
+                        <CollapsibleBlock title={<h3>{entry.title}</h3>} key={entry.id} initState={index == 0}>
                             <form data-id={entry.id} onChange={e => handleFormChange(entry.id, e.target)}>
                                 <label htmlFor={"title-" + entry.id}>Project name:</label>
                                 <input type="text" id={"title-" + entry.id} name="title" defaultValue={entry.title} />

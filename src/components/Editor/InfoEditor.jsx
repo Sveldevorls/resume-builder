@@ -7,7 +7,7 @@ export default function InfoEditor({info, infoStateSetter}) {
 
     return (
         <div id="InfoEditor">
-            <CollapsibleBlock title={<h2>Personal details</h2>}>
+            <CollapsibleBlock title={<h2>Personal details</h2>} initState={true}>
                 <form onChange={(e) => handleFormChange(e.target)}>
                     <label htmlFor="fullName">Full name:</label>
                     <input type="text" id="fullName" name="fullName" defaultValue={info.fullName} />

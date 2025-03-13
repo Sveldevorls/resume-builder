@@ -73,9 +73,9 @@ export default function EducationEditor({ education, educationStateSetter }) {
     return (
         <div id="EducationEditor">
             <CollapsibleBlock title={<h2>Education</h2>} >
-                {education.map(entry => {
+                {education.map((entry, index) => {
                     return (
-                        <CollapsibleBlock title={<h3>{entry.school}</h3>} key={entry.id}>
+                        <CollapsibleBlock title={<h3>{entry.school}</h3>} key={entry.id} initState={index == 0}>
                             <form data-id={entry.id} onChange={e => handleFormChange(entry.id, e.target)}>
                                 <label htmlFor={"school-" + entry.id}>School:</label>
                                 <input type="text" id={"school-" + entry.id} name="school" defaultValue={entry.school} />

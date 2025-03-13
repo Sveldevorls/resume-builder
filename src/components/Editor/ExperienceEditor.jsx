@@ -77,9 +77,9 @@ export default function ExperienceEditor({ experience, experienceStateSetter }) 
     return (
         <div id="ExperienceEditor">
             <CollapsibleBlock title={<h2>Experience</h2>} >
-                {experience.map(entry => {
+                {experience.map((entry, index) => {
                     return (
-                        <CollapsibleBlock title={<h3>{entry.company}</h3>} key={entry.id}>
+                        <CollapsibleBlock title={<h3>{entry.company}</h3>} key={entry.id} initState={index == 0}>
                             <form data-id={entry.id} onChange={e => handleFormChange(entry.id, e.target)}>
                                 <label htmlFor={"company-" + entry.id}>Company:</label>
                                 <input type="text" id={"company-" + entry.id} name="company" defaultValue={entry.company} />
