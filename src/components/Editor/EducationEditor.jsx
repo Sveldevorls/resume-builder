@@ -77,44 +77,59 @@ export default function EducationEditor({ education, educationStateSetter }) {
                     return (
                         <CollapsibleBlock title={<h3>{entry.school}</h3>} key={entry.id} initState={index == 0}>
                             <form data-id={entry.id} onChange={e => handleFormChange(entry.id, e.target)}>
-                                <label htmlFor={"school-" + entry.id}>School:</label>
-                                <input type="text" id={"school-" + entry.id} name="school" defaultValue={entry.school} />
-                                <label htmlFor={"location-" + entry.id}>Location:</label>
-                                <input type="text" id={"location-" + entry.id} name="location" defaultValue={entry.location} />
-                                <label htmlFor={"degree-" + entry.id}>Degree:</label>
-                                <input type="text" id={"degree-" + entry.id} name="degree" defaultValue={entry.degree} />
-                                <label htmlFor={"startMonth-" + entry.id}>Start date:</label>
-                                <div className="row">
-                                    <select id={"startMonth-" + entry.id} name="startMonth" defaultValue={entry.startMonth}>
-                                        {months.map((month, index) =>
-                                            <option key={index} value={index + 1}>
-                                                {month}
-                                            </option>
-                                        )}
-                                    </select>
-                                    <input type="text" id={"startYear-" + entry.id} name="startYear" defaultValue={entry.startYear} />
-                                </div>
-                                <label htmlFor={"endMonth-" + entry.id}>End date:</label>
-                                <div className="row">
-                                    <select id={"endMonth-" + entry.id} name="endMonth" defaultValue={entry.endMonth}>
-                                        {months.map((month, index) =>
-                                            <option key={index} value={index + 1}>
-                                                {month}
-                                            </option>
-                                        )}
-                                    </select>
-                                    <input type="text" id={"endYear-" + entry.id} name="endYear" defaultValue={entry.endYear} />
-                                </div>
-                                <div className="row">
-                                    <span>Extra notes</span>
-                                    <button type="button" onClick={() => handleNewNoteClick(entry.id)}>+</button>
-                                </div>
-                                {entry.notes.map(note =>
-                                    <div className="row" key={note.id}>
-                                        <button type="button" data-id={note.id} onClick={(e) => handleRemoveNoteClick(entry.id, e.target.dataset.id)}>X</button>
-                                        <input type="text" name="noteContent" data-id={note.id} defaultValue={note.content} />
+                                <label>
+                                    School:
+                                    <input type="text" name="school" defaultValue={entry.school} />
+                                </label>
+                                <label>
+                                    Location:
+                                    <input type="text" name="location" defaultValue={entry.location} />
+                                </label>
+                                <label>
+                                    Degree:
+                                    <input type="text" name="degree" defaultValue={entry.degree} />
+                                </label>
+                                <fieldset>
+                                    <legend>Start date:</legend>
+                                    <div className="row">
+                                        <select name="startMonth" defaultValue={entry.startMonth}>
+                                            {months.map((month, index) =>
+                                                <option key={index} value={index + 1}>
+                                                    {month}
+                                                </option>
+                                            )}
+                                        </select>
+                                        <input type="text" name="startYear" defaultValue={entry.startYear} />
                                     </div>
-                                )}
+                                </fieldset>
+                                <fieldset>
+                                    <legend>End date:</legend>
+                                    <div className="row">
+                                        <select name="endMonth" defaultValue={entry.endMonth}>
+                                            {months.map((month, index) =>
+                                                <option key={index} value={index + 1}>
+                                                    {month}
+                                                </option>
+                                            )}
+                                        </select>
+                                        <input type="text" name="endYear" defaultValue={entry.endYear} />
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>
+                                        <div className="row">
+                                            Extra notes:
+                                            <button type="button" onClick={() => handleNewNoteClick(entry.id)}>+</button>
+                                        </div>
+                                    </legend>
+
+                                    {entry.notes.map(note =>
+                                        <div className="row" key={note.id}>
+                                            <button type="button" data-id={note.id} onClick={(e) => handleRemoveNoteClick(entry.id, e.target.dataset.id)}>X</button>
+                                            <input type="text" name="noteContent" data-id={note.id} defaultValue={note.content} />
+                                        </div>
+                                    )}
+                                </fieldset>
                             </form>
                             <button type="button" onClick={() => handleRemoveEntryClick(entry.id)}>Remove this entry</button>
                         </CollapsibleBlock>

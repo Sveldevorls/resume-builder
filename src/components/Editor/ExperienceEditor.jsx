@@ -81,51 +81,66 @@ export default function ExperienceEditor({ experience, experienceStateSetter }) 
                     return (
                         <CollapsibleBlock title={<h3>{entry.company}</h3>} key={entry.id} initState={index == 0}>
                             <form data-id={entry.id} onChange={e => handleFormChange(entry.id, e.target)}>
-                                <label htmlFor={"company-" + entry.id}>Company:</label>
-                                <input type="text" id={"company-" + entry.id} name="company" defaultValue={entry.company} />
-                                <label htmlFor={"location-" + entry.id}>Location:</label>
-                                <input type="text" id={"location-" + entry.id} name="location" defaultValue={entry.location} />
-                                <label htmlFor={"title-" + entry.id}>Title:</label>
-                                <input type="text" id={"title-" + entry.id} name="title" defaultValue={entry.title} />
-                                <div className="row">
-                                    <label htmlFor={"employed-" + entry.id}>Currently employed</label>
-                                    <input type="checkbox" id={"employed-" + entry.id} name="isCurrentlyEmployed" defaultChecked={entry.isCurrentlyEmployed}></input>
-                                </div>
-                                <label htmlFor={"startMonth-" + entry.id}>Start date:</label>
-                                <div className="row">
-                                    <select id={"startMonth-" + entry.id} name="startMonth" defaultValue={entry.startMonth}>
-                                        {months.map((month, index) =>
-                                            <option key={index} value={index + 1}>
-                                                {month}
-                                            </option>
-                                        )}
-                                    </select>
-                                    <input type="text" id={"startYear-" + entry.id} name="startYear" defaultValue={entry.startYear} />
-                                </div>
+                                <label>
+                                    Company:
+                                    <input type="text" name="company" defaultValue={entry.company} />
+                                </label>
+                                <label>
+                                    Location:
+                                    <input type="text" name="location" defaultValue={entry.location} />
+                                </label>
+                                <label>
+                                    Title:
+                                    <input type="text" name="title" defaultValue={entry.title} />
+                                </label>
+                                <label>
+                                    <div className="row">
+                                        Currently employed
+                                        <input type="checkbox" name="isCurrentlyEmployed" defaultChecked={entry.isCurrentlyEmployed}></input>
+                                    </div>
+                                </label>
+                                <fieldset>
+                                    <legend>Start date:</legend>
+                                    <div className="row">
+                                        <select name="startMonth" defaultValue={entry.startMonth}>
+                                            {months.map((month, index) =>
+                                                <option key={index} value={index + 1}>
+                                                    {month}
+                                                </option>
+                                            )}
+                                        </select>
+                                        <input type="text" name="startYear" defaultValue={entry.startYear} />
+                                    </div>
+                                </fieldset>
+
                                 {!entry.isCurrentlyEmployed &&
-                                    <>
-                                        <label htmlFor={"endMonth-" + entry.id}>End date:</label>
+                                    <fieldset>
+                                        <legend>End date:</legend>
                                         <div className="row">
-                                            <select id={"endMonth-" + entry.id} name="endMonth" defaultValue={entry.endMonth}>
+                                            <select name="endMonth" defaultValue={entry.endMonth}>
                                                 {months.map((month, index) =>
                                                     <option key={index} value={index + 1}>
                                                         {month}
                                                     </option>
                                                 )}
                                             </select>
-                                            <input type="text" id={"endYear-" + entry.id} name="endYear" defaultValue={entry.endYear} />
+                                            <input type="text" name="endYear" defaultValue={entry.endYear} />
                                         </div>
-                                    </>}
-                                <div className="row">
-                                    <span>Extra notes</span>
-                                    <button type="button" onClick={() => handleNewNoteClick(entry.id)}>+</button>
-                                </div>
-                                {entry.notes.map(note =>
-                                    <div className="row" key={note.id}>
-                                        <button type="button" data-id={note.id} onClick={(e) => handleRemoveNoteClick(entry.id, e.target.dataset.id)}>X</button>
-                                        <input type="text" name="noteContent" data-id={note.id} defaultValue={note.content} />
-                                    </div>
-                                )}
+                                    </fieldset>}
+                                <fieldset>
+                                    <legend>
+                                        <div className="row">
+                                            <span>Extra notes</span>
+                                            <button type="button" onClick={() => handleNewNoteClick(entry.id)}>+</button>
+                                        </div>
+                                    </legend>
+                                    {entry.notes.map(note =>
+                                        <div className="row" key={note.id}>
+                                            <button type="button" data-id={note.id} onClick={(e) => handleRemoveNoteClick(entry.id, e.target.dataset.id)}>X</button>
+                                            <input type="text" name="noteContent" data-id={note.id} defaultValue={note.content} />
+                                        </div>
+                                    )}
+                                </fieldset>
                             </form>
                             <button type="button" onClick={() => handleRemoveEntryClick(entry.id)}>Remove this entry</button>
                         </CollapsibleBlock>

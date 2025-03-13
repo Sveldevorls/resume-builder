@@ -29,14 +29,18 @@ export default function SkillsEditor({ skills, skillsStateSetter }) {
     return (
         <div id="SkillsEditor">
             <CollapsibleBlock title={<h2>Skills</h2>} >
-                {skills.map(entry => {
+                {skills.map((entry, index) => {
                     return (
-                        <CollapsibleBlock title={<h3>{entry.title}</h3>} key={entry.id}>
+                        <CollapsibleBlock title={<h3>{entry.title}</h3>} key={entry.id} initState={index == 0}>
                             <form data-id={entry.id} onChange={e => handleFormChange(entry.id, e.target)}>
-                                <label htmlFor={"title-" + entry.id}>Skill:</label>
-                                <input type="text" id={"title-" + entry.id} name="title" defaultValue={entry.title} />
-                                <label htmlFor={"detail-" + entry.id}>Detail:</label>
-                                <input type="text" id={"detail-" + entry.id} name="content" defaultValue={entry.content} />
+                                <label>
+                                    Skill:
+                                    <input type="text" name="title" defaultValue={entry.title} />
+                                </label>
+                                <label>
+                                    Detail:
+                                    <input type="text" id={"detail-" + entry.id} name="content" defaultValue={entry.content} />
+                                </label>
                             </form>
                             <button type="button" onClick={() => handleRemoveEntryClick(entry.id)}>Remove this entry</button>
                         </CollapsibleBlock>

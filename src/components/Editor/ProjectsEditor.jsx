@@ -47,7 +47,7 @@ export default function ProjectsEditor({ projects, projectsStateSetter }) {
     }
 
     function handleNewEntryClick() {
-        projectsStateSetter([...projects,     {
+        projectsStateSetter([...projects, {
             "id": crypto.randomUUID(),
             "title": "Replace me",
             "techs": "Replace me",
@@ -66,20 +66,29 @@ export default function ProjectsEditor({ projects, projectsStateSetter }) {
                     return (
                         <CollapsibleBlock title={<h3>{entry.title}</h3>} key={entry.id} initState={index == 0}>
                             <form data-id={entry.id} onChange={e => handleFormChange(entry.id, e.target)}>
-                                <label htmlFor={"title-" + entry.id}>Project name:</label>
-                                <input type="text" id={"title-" + entry.id} name="title" defaultValue={entry.title} />
-                                <label htmlFor={"techs-" + entry.id}>Techs used:</label>
-                                <input type="text" id={"techs-" + entry.id} name="techs" defaultValue={entry.techs} />
-                                <div className="row">
-                                    <span>Extra notes</span>
-                                    <button type="button" onClick={() => handleNewNoteClick(entry.id)}>+</button>
-                                </div>
-                                {entry.notes.map(note =>
-                                    <div className="row" key={note.id}>
-                                        <button type="button" data-id={note.id} onClick={(e) => handleRemoveNoteClick(entry.id, e.target.dataset.id)}>X</button>
-                                        <input type="text" name="noteContent" data-id={note.id} defaultValue={note.content} />
-                                    </div>
-                                )}
+                                <label>
+                                    Project name:
+                                    <input type="text" name="title" defaultValue={entry.title} />
+                                </label>
+
+                                <label>
+                                    Techs used:
+                                    <input type="text" name="techs" defaultValue={entry.techs} />
+                                </label>
+                                <fieldset>
+                                    <legend>
+                                        <div className="row">
+                                            <span>Extra notes</span>
+                                            <button type="button" onClick={() => handleNewNoteClick(entry.id)}>+</button>
+                                        </div>
+                                    </legend>
+                                    {entry.notes.map(note =>
+                                        <div className="row" key={note.id}>
+                                            <button type="button" data-id={note.id} onClick={(e) => handleRemoveNoteClick(entry.id, e.target.dataset.id)}>X</button>
+                                            <input type="text" name="noteContent" data-id={note.id} defaultValue={note.content} />
+                                        </div>
+                                    )}
+                                </fieldset>
                             </form>
                             <button type="button" onClick={() => handleRemoveEntryClick(entry.id)}>Remove this entry</button>
                         </CollapsibleBlock>

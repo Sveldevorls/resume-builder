@@ -5,14 +5,14 @@ export default function CollapsibleBlock({ title, initState=false, children }) {
     const [active, setActive] = useState(initState);
 
     return (
-        <div className="CollapsibleBlock">
-            <div className="row">
-                {title}
+        <div className={"CollapsibleBlock " + (active ? "active" : "hidden")}>
+            <div className="row title">
+                    {title}
                 <button onClick={() => setActive(!active)}>
-                    {active ? "-" : "+"}
+                    {active ? "▲" : "▼"}
                 </button>
             </div>
-            <div className={"content " + (active ? "active" : "hidden")}>
+            <div className="content">
                 {children}
             </div>
         </div>

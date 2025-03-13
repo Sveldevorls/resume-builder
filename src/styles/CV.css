@@ -1,8 +1,9 @@
 .CV {
-    /* A4 size */
-    width: 21cm;
-    height: 29.7cm;
+    width: 100%;
+    aspect-ratio: 210/297;
     padding: 1in;
+
+    background-color: #fff;
 
     /* Debug */
     border: 3px solid black;
