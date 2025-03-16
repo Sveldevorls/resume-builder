@@ -5,28 +5,28 @@ import ProjectsEditor from "./ProjectsEditor"
 import SkillsEditor from "./SkillsEditor"
 import "../../styles/Editor.css"
 
-export default function Editor({ infoState, educationState, experienceState, projectsState, skillsState }) {
+export default function Editor(props) {
     return (
         <div className="Editor">
             <InfoEditor
-                info={infoState.info}
-                infoStateSetter={infoState.setInfo}
+                info={props.info}
+                onFormChange={props.onInfoFormChange}
             />
             <EducationEditor
-                education={educationState.education}
-                educationStateSetter={educationState.setEducation}
+                education={props.education}
+                onFormChange={props.onEducationFormChange}
             />
-            <ExperienceEditor 
-                experience = {experienceState.experience}
-                experienceStateSetter={experienceState.setExperience}
+            <ExperienceEditor
+                experience={props.experience}
+                onFormChange={props.onExperienceFormChange}
             />
-            <ProjectsEditor 
-                projects = {projectsState.projects}
-                projectsStateSetter={projectsState.setProjects}
+            <ProjectsEditor
+                projects={props.projects}
+                onFormChange={props.onProjectsFormChange}
             />
-            <SkillsEditor 
-                skills = {skillsState.skills}
-                skillsStateSetter={skillsState.setSkills}
+            <SkillsEditor
+                skills={props.skills}
+                onFormChange={props.onSkillsFormChange}
             />
         </div>
     )

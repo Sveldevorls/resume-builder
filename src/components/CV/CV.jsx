@@ -5,14 +5,14 @@ import Projects from "./Projects"
 import Skills from "./Skills"
 import "../../styles/CV.css"
 
-export default function CV({ info, education, experience, projects, skills }) {
+export default function CV(props) {
     return (
         <div className="CV">
-            <Info info={info} />
-            <Education education={education} />
-            <Experience experience={experience} />
-            <Projects projects={projects} />
-            <Skills skills={skills} />
+            <Info info={props.info} />
+            <Education education={props.education} />
+            <Experience experience={props.experience} />
+            <Projects projects={props.projects} />
+            <Skills skills={props.skills} />
         </div>
     )
 }

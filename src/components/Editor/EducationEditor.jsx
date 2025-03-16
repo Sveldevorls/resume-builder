@@ -1,6 +1,8 @@
+import TextareaAutosize from 'react-textarea-autosize';
 import CollapsibleBlock from "./CollapsibleBlock"
+import { Fragment } from 'react';
 
-export default function EducationEditor({ education, educationStateSetter }) {
+export default function EducationEditor({ education, onFormChange }) {
     function handleNewNoteClick(entryID) {
         let newEducationArray = [];
         for (let entry of education) {
@@ -8,7 +10,7 @@ export default function EducationEditor({ education, educationStateSetter }) {
                 newEducationArray.push({ ...entry, "notes": [...entry.notes, { "id": crypto.randomUUID(), "content": "" }] }) :
                 newEducationArray.push(entry);
         }
-        educationStateSetter(newEducationArray);
+        onFormChange(newEducationArray);
     }
 
     function handleRemoveNoteClick(entryID, removedNoteID) {
@@ -18,7 +20,7 @@ export default function EducationEditor({ education, educationStateSetter }) {
                 newEducationArray.push({ ...entry, "notes": entry.notes.filter(note => note.id != removedNoteID) }) :
                 newEducationArray.push(entry);
         }
-        educationStateSetter(newEducationArray);
+        onFormChange(newEducationArray);
     }
 
     function handleFormChange(entryID, changedElement) {
@@ -43,11 +45,11 @@ export default function EducationEditor({ education, educationStateSetter }) {
                 }
             }
         }
-        educationStateSetter(newEducationArray);
+        onFormChange(newEducationArray);
     }
 
     function handleNewEntryClick() {
-        educationStateSetter([...education, {
+        onFormChange([...education, {
             "id": crypto.randomUUID(),
             "school": "Replace me",
             "location": "Replace me",
@@ -57,12 +59,16 @@ export default function EducationEditor({ education, educationStateSetter }) {
             "endMonth": 1,
             "endYear": 1900,
             "notes": [
+                {
+                    "id": crypto.randomUUID(),
+                    "content": "",
+                }
             ],
         }])
     }
 
     function handleRemoveEntryClick(entryID) {
-        educationStateSetter(education.filter(entry => entry.id != entryID));
+        onFormChange(education.filter(entry => entry.id != entryID));
     }
 
     const months = [
@@ -73,69 +79,68 @@ export default function EducationEditor({ education, educationStateSetter }) {
     return (
         <div id="EducationEditor">
             <CollapsibleBlock title={<h2>Education</h2>} >
-                {education.map((entry, index) => {
-                    return (
-                        <CollapsibleBlock title={<h3>{entry.school}</h3>} key={entry.id} initState={index == 0}>
-                            <form data-id={entry.id} onChange={e => handleFormChange(entry.id, e.target)}>
-                                <label>
-                                    School:
-                                    <input type="text" name="school" defaultValue={entry.school} />
-                                </label>
-                                <label>
-                                    Location:
-                                    <input type="text" name="location" defaultValue={entry.location} />
-                                </label>
-                                <label>
-                                    Degree:
-                                    <input type="text" name="degree" defaultValue={entry.degree} />
-                                </label>
-                                <fieldset>
-                                    <legend>Start date:</legend>
+                {education.map((entry, index) =>
+                    <CollapsibleBlock title={<h3>{entry.school}</h3>} key={entry.id} initState={index == 0}>
+                        <form data-id={entry.id} onChange={e => handleFormChange(entry.id, e.target)}>
+                            <label>
+                                School:
+                                <input type="text" name="school" defaultValue={entry.school} />
+                            </label>
+                            <label>
+                                Location:
+                                <input type="text" name="location" defaultValue={entry.location} />
+                            </label>
+                            <label>
+                                Degree:
+                                <input type="text" name="degree" defaultValue={entry.degree} />
+                            </label>
+                            <fieldset>
+                                <legend>Start date:</legend>
+                                <div className="row">
+                                    <select name="startMonth" defaultValue={entry.startMonth}>
+                                        {months.map((month, index) =>
+                                            <option key={index} value={index + 1}>
+                                                {month}
+                                            </option>
+                                        )}
+                                    </select>
+                                    <input type="text" name="startYear" className="input-year" defaultValue={entry.startYear} />
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <legend>End date:</legend>
+                                <div className="row">
+                                    <select name="endMonth" defaultValue={entry.endMonth}>
+                                        {months.map((month, index) =>
+                                            <option key={index} value={index + 1}>
+                                                {month}
+                                            </option>
+                                        )}
+                                    </select>
+                                    <input type="text" name="endYear" className="input-year" defaultValue={entry.endYear} />
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <legend>
                                     <div className="row">
-                                        <select name="startMonth" defaultValue={entry.startMonth}>
-                                            {months.map((month, index) =>
-                                                <option key={index} value={index + 1}>
-                                                    {month}
-                                                </option>
-                                            )}
-                                        </select>
-                                        <input type="text" name="startYear" defaultValue={entry.startYear} />
+                                        Extra notes:
+                                        <button type="button" className="button-new-entry" onClick={() => handleNewNoteClick(entry.id)}>Add new note</button>
                                     </div>
-                                </fieldset>
-                                <fieldset>
-                                    <legend>End date:</legend>
-                                    <div className="row">
-                                        <select name="endMonth" defaultValue={entry.endMonth}>
-                                            {months.map((month, index) =>
-                                                <option key={index} value={index + 1}>
-                                                    {month}
-                                                </option>
-                                            )}
-                                        </select>
-                                        <input type="text" name="endYear" defaultValue={entry.endYear} />
-                                    </div>
-                                </fieldset>
-                                <fieldset>
-                                    <legend>
-                                        <div className="row">
-                                            Extra notes:
-                                            <button type="button" onClick={() => handleNewNoteClick(entry.id)}>+</button>
-                                        </div>
-                                    </legend>
-
+                                </legend>
+                                <div className="note-grid">
                                     {entry.notes.map(note =>
-                                        <div className="row" key={note.id}>
+                                        <Fragment key={note.id}>
+                                            <TextareaAutosize minRows="3" name="noteContent" data-id={note.id} defaultValue={note.content} />
                                             <button type="button" data-id={note.id} onClick={(e) => handleRemoveNoteClick(entry.id, e.target.dataset.id)}>X</button>
-                                            <input type="text" name="noteContent" data-id={note.id} defaultValue={note.content} />
-                                        </div>
+                                        </Fragment>
                                     )}
-                                </fieldset>
-                            </form>
-                            <button type="button" onClick={() => handleRemoveEntryClick(entry.id)}>Remove this entry</button>
-                        </CollapsibleBlock>
-                    )
-                })}
-                <button onClick={handleNewEntryClick}>Add new entry</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <button type="button" className="button-remove-entry" onClick={() => handleRemoveEntryClick(entry.id)}>Remove this entry</button>
+                    </CollapsibleBlock>
+                )}
+                <button className="button-new-entry" onClick={handleNewEntryClick}>Add new entry</button>
             </CollapsibleBlock>
         </div>
     )

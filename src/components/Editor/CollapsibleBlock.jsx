@@ -6,9 +6,9 @@ export default function CollapsibleBlock({ title, initState=false, children }) {
 
     return (
         <div className={"CollapsibleBlock " + (active ? "active" : "hidden")}>
-            <div className="row title">
+            <div className="row title" onClick={() => setActive(!active)}>
                     {title}
-                <button onClick={() => setActive(!active)}>
+                <button>
                     {active ? "▲" : "▼"}
                 </button>
             </div>

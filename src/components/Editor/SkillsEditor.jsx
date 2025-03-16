@@ -1,6 +1,7 @@
+import TextareaAutosize from 'react-textarea-autosize';
 import CollapsibleBlock from "./CollapsibleBlock"
 
-export default function SkillsEditor({ skills, skillsStateSetter }) {
+export default function SkillsEditor({ skills, onFormChange }) {
     function handleFormChange(entryID, changedElement) {
         let newSkillsArray = [];
         for (let entry of skills) {
@@ -11,11 +12,11 @@ export default function SkillsEditor({ skills, skillsStateSetter }) {
                 newSkillsArray.push({ ...entry, [changedElement.name]: changedElement.value });
             }
         }
-        skillsStateSetter(newSkillsArray);
+        onFormChange(newSkillsArray);
     }
 
     function handleNewEntryClick() {
-        skillsStateSetter([...skills, {
+        onFormChange([...skills, {
             "id": crypto.randomUUID(),
             "title": "Replace me",
             "content": "Replace me",
@@ -23,7 +24,7 @@ export default function SkillsEditor({ skills, skillsStateSetter }) {
     }
 
     function handleRemoveEntryClick(entryID) {
-        skillsStateSetter(skills.filter(entry => entry.id != entryID));
+        onFormChange(skills.filter(entry => entry.id != entryID));
     }
 
     return (
@@ -38,15 +39,15 @@ export default function SkillsEditor({ skills, skillsStateSetter }) {
                                     <input type="text" name="title" defaultValue={entry.title} />
                                 </label>
                                 <label>
-                                    Detail:
-                                    <input type="text" id={"detail-" + entry.id} name="content" defaultValue={entry.content} />
+                                    Details:
+                                    <TextareaAutosize minRows="3" name="content" defaultValue={entry.content}/>
                                 </label>
                             </form>
-                            <button type="button" onClick={() => handleRemoveEntryClick(entry.id)}>Remove this entry</button>
+                            <button type="button" className="button-remove-entry" onClick={() => handleRemoveEntryClick(entry.id)}>Remove this entry</button>
                         </CollapsibleBlock>
                     )
                 })}
-                <button onClick={handleNewEntryClick}>Add new entry</button>
+                <button className="button-new-entry" onClick={handleNewEntryClick}>Add new entry</button>
             </CollapsibleBlock>
         </div>
     )

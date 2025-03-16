@@ -1,6 +1,8 @@
+import TextareaAutosize from 'react-textarea-autosize';
 import CollapsibleBlock from "./CollapsibleBlock"
+import { Fragment } from 'react';
 
-export default function ProjectsEditor({ projects, projectsStateSetter }) {
+export default function ProjectsEditor({ projects, onFormChange }) {
     function handleNewNoteClick(entryID) {
         let newProjectsArray = [];
         for (let entry of projects) {
@@ -8,7 +10,7 @@ export default function ProjectsEditor({ projects, projectsStateSetter }) {
                 newProjectsArray.push({ ...entry, "notes": [...entry.notes, { "id": crypto.randomUUID(), "content": "" }] }) :
                 newProjectsArray.push(entry);
         }
-        projectsStateSetter(newProjectsArray);
+        onFormChange(newProjectsArray);
     }
 
     function handleRemoveNoteClick(entryID, removedNoteID) {
@@ -18,7 +20,7 @@ export default function ProjectsEditor({ projects, projectsStateSetter }) {
                 newProjectsArray.push({ ...entry, "notes": entry.notes.filter(note => note.id != removedNoteID) }) :
                 newProjectsArray.push(entry);
         }
-        projectsStateSetter(newProjectsArray);
+        onFormChange(newProjectsArray);
     }
 
     function handleFormChange(entryID, changedElement) {
@@ -43,20 +45,25 @@ export default function ProjectsEditor({ projects, projectsStateSetter }) {
                 }
             }
         }
-        projectsStateSetter(newProjectsArray);
+        onFormChange(newProjectsArray);
     }
 
     function handleNewEntryClick() {
-        projectsStateSetter([...projects, {
+        onFormChange([...projects, {
             "id": crypto.randomUUID(),
             "title": "Replace me",
             "techs": "Replace me",
-            "notes": [],
+            "notes": [
+                {
+                    "id": crypto.randomUUID(),
+                    "content": "",
+                }
+            ],
         },])
     }
 
     function handleRemoveEntryClick(entryID) {
-        projectsStateSetter(projects.filter(entry => entry.id != entryID));
+        onFormChange(projects.filter(entry => entry.id != entryID));
     }
 
     return (
@@ -70,31 +77,32 @@ export default function ProjectsEditor({ projects, projectsStateSetter }) {
                                     Project name:
                                     <input type="text" name="title" defaultValue={entry.title} />
                                 </label>
-
                                 <label>
                                     Techs used:
-                                    <input type="text" name="techs" defaultValue={entry.techs} />
+                                    <TextareaAutosize minRows="3" name="techs" defaultValue={entry.techs} />
                                 </label>
                                 <fieldset>
                                     <legend>
                                         <div className="row">
-                                            <span>Extra notes</span>
-                                            <button type="button" onClick={() => handleNewNoteClick(entry.id)}>+</button>
+                                            Extra notes:
+                                            <button type="button" className="button-new-entry" onClick={() => handleNewNoteClick(entry.id)}>Add new note</button>
                                         </div>
                                     </legend>
-                                    {entry.notes.map(note =>
-                                        <div className="row" key={note.id}>
-                                            <button type="button" data-id={note.id} onClick={(e) => handleRemoveNoteClick(entry.id, e.target.dataset.id)}>X</button>
-                                            <input type="text" name="noteContent" data-id={note.id} defaultValue={note.content} />
-                                        </div>
-                                    )}
+                                    <div className="note-grid">
+                                        {entry.notes.map(note =>
+                                            <Fragment key={note.id}>
+                                                <TextareaAutosize minRows="3" name="noteContent" data-id={note.id} defaultValue={note.content} />
+                                                <button type="button" data-id={note.id} onClick={(e) => handleRemoveNoteClick(entry.id, e.target.dataset.id)}>X</button>
+                                            </Fragment>
+                                        )}
+                                    </div>
                                 </fieldset>
                             </form>
-                            <button type="button" onClick={() => handleRemoveEntryClick(entry.id)}>Remove this entry</button>
+                            <button type="button" className="button-remove-entry" onClick={() => handleRemoveEntryClick(entry.id)}>Remove this entry</button>
                         </CollapsibleBlock>
                     )
                 })}
-                <button onClick={handleNewEntryClick}>Add new entry</button>
+                <button className="button-new-entry" onClick={handleNewEntryClick}>Add new entry</button>
             </CollapsibleBlock>
         </div>
     )
