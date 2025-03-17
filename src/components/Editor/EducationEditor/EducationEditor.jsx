@@ -49,22 +49,26 @@ export default function EducationEditor({ education, onFormChange }) {
     }
 
     function handleNewEntryClick() {
-        onFormChange([...education, {
-            "id": crypto.randomUUID(),
-            "school": "Replace me",
-            "location": "Replace me",
-            "degree": "Replace me",
-            "startMonth": 1,
-            "startYear": 1900,
-            "endMonth": 1,
-            "endYear": 1900,
-            "notes": [
-                {
-                    "id": crypto.randomUUID(),
-                    "content": "",
-                }
-            ],
-        }])
+        const newEducationArray = [
+            ...education,
+            {
+                "id": crypto.randomUUID(),
+                "school": "Replace me",
+                "location": "Replace me",
+                "degree": "Replace me",
+                "startMonth": 1,
+                "startYear": 1900,
+                "endMonth": 1,
+                "endYear": 1900,
+                "notes": [
+                    {
+                        "id": crypto.randomUUID(),
+                        "content": "",
+                    }
+                ],
+            }
+        ]
+        onFormChange(newEducationArray);
     }
 
     function handleRemoveEntryClick(entryID) {

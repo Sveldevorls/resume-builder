@@ -16,11 +16,15 @@ export default function SkillsEditor({ skills, onFormChange }) {
     }
 
     function handleNewEntryClick() {
-        onFormChange([...skills, {
-            "id": crypto.randomUUID(),
-            "title": "Replace me",
-            "content": "Replace me",
-        },])
+        const newSkillsArray = [
+            ...skills,
+            {
+                "id": crypto.randomUUID(),
+                "title": "Replace me",
+                "content": "Replace me",
+            }
+        ]
+        onFormChange(newSkillsArray);
     }
 
     function handleRemoveEntryClick(entryID) {
@@ -40,7 +44,7 @@ export default function SkillsEditor({ skills, onFormChange }) {
                                 </label>
                                 <label>
                                     Details:
-                                    <TextareaAutosize minRows="3" name="content" defaultValue={entry.content}/>
+                                    <TextareaAutosize minRows="3" name="content" defaultValue={entry.content} />
                                 </label>
                             </form>
                             <button type="button" className="button-remove-entry" onClick={() => handleRemoveEntryClick(entry.id)}>Remove this entry</button>

@@ -52,23 +52,27 @@ export default function ExperienceEditor({ experience, onFormChange }) {
     }
 
     function handleNewEntryClick() {
-        onFormChange([...experience, {
-            "id": crypto.randomUUID(),
-            "company": "Replace me",
-            "location": "Replace me",
-            "title": "Replace me",
-            "startMonth": 1,
-            "startYear": 1900,
-            "endMonth": 1,
-            "endYear": 1900,
-            "isCurrentlyEmployed": false,
-            "notes": [
-                {
-                    "id": crypto.randomUUID(),
-                    "content": "",
-                }
-            ],
-        }])
+        const newExperienceArray = [
+            ...experience,
+            {
+                "id": crypto.randomUUID(),
+                "company": "Replace me",
+                "location": "Replace me",
+                "title": "Replace me",
+                "startMonth": 1,
+                "startYear": 1900,
+                "endMonth": 1,
+                "endYear": 1900,
+                "isCurrentlyEmployed": false,
+                "notes": [
+                    {
+                        "id": crypto.randomUUID(),
+                        "content": "",
+                    }
+                ],
+            }
+        ];
+        onFormChange(newExperienceArray)
     }
 
     function handleRemoveEntryClick(entryID) {

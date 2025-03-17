@@ -49,17 +49,21 @@ export default function ProjectsEditor({ projects, onFormChange }) {
     }
 
     function handleNewEntryClick() {
-        onFormChange([...projects, {
-            "id": crypto.randomUUID(),
-            "title": "Replace me",
-            "techs": "Replace me",
-            "notes": [
-                {
-                    "id": crypto.randomUUID(),
-                    "content": "",
-                }
-            ],
-        },])
+        const newProjectsArray = [
+            ...projects,
+            {
+                "id": crypto.randomUUID(),
+                "title": "Replace me",
+                "techs": "Replace me",
+                "notes": [
+                    {
+                        "id": crypto.randomUUID(),
+                        "content": "",
+                    }
+                ],
+            }
+        ]
+        onFormChange(newProjectsArray)
     }
 
     function handleRemoveEntryClick(entryID) {

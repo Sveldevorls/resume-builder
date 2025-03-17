@@ -12,25 +12,32 @@ import './App.css'
 
 
 export default function App() {
-    const [info, setInfo] = useState(localStorage.getItem("info") || defaultInfo);
-    const [education, setEducation] = useState(localStorage.getItem("education") || defaultEducation);
-    const [experience, setExperience] = useState(localStorage.getItem("experiences") || defaultExperience);
-    const [projects, setProjects] = useState(localStorage.getItem("projects") || defaultProjects);
-    const [skills, setSkills] = useState(localStorage.getItem("skills") || defaultSkills);
+    const [info, setInfo] = useState(JSON.parse(localStorage.getItem("info")) || defaultInfo);
+    const [education, setEducation] = useState(JSON.parse(localStorage.getItem("education")) || defaultEducation);
+    const [experience, setExperience] = useState(JSON.parse(localStorage.getItem("experiences")) || defaultExperience);
+    const [projects, setProjects] = useState(JSON.parse(localStorage.getItem("projects")) || defaultProjects);
+    const [skills, setSkills] = useState(JSON.parse(localStorage.getItem("skills")) || defaultSkills);
+
+    function handleFormChange(key, stateSetter) {
+        return (newState) => {
+            localStorage.setItem(key, JSON.stringify(newState));
+            stateSetter(newState);
+        }
+    }
 
     return (
         <div className="App">
             <Editor
                 info={info}
-                onInfoFormChange={setInfo}
+                onInfoFormChange={handleFormChange("info", setInfo)}
                 education={education}
-                onEducationFormChange={setEducation}
+                onEducationFormChange={handleFormChange("education", setEducation)}
                 experience={experience}
-                onExperienceFormChange={setExperience}
+                onExperienceFormChange={handleFormChange("experiences", setExperience)}
                 projects={projects}
-                onProjectsFormChange={setProjects}
+                onProjectsFormChange={handleFormChange("projects", setProjects)}
                 skills={skills}
-                onSkillsFormChange={setSkills}
+                onSkillsFormChange={handleFormChange("skills", setSkills)}
             />
             <CV
                 info={info}

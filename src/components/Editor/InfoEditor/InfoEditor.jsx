@@ -2,7 +2,8 @@ import CollapsibleBlock from "../CollapsibleBlock"
 
 export default function InfoEditor({ info, onFormChange }) {
     function handleFormChange(updatedElement) {
-        onFormChange({ ...info, [updatedElement.name]: updatedElement.value })
+        const newInfoState = { ...info, [updatedElement.name]: updatedElement.value };
+        onFormChange(newInfoState);
     }
 
     return (
