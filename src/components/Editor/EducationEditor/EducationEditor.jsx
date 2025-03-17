@@ -1,37 +1,37 @@
 import TextareaAutosize from 'react-textarea-autosize';
-import CollapsibleBlock from "./CollapsibleBlock"
+import CollapsibleBlock from "../CollapsibleBlock"
 import { Fragment } from 'react';
 
-export default function ExperienceEditor({ experience, onFormChange }) {
+export default function EducationEditor({ education, onFormChange }) {
     function handleNewNoteClick(entryID) {
-        let newexperienceArray = [];
-        for (let entry of experience) {
+        let newEducationArray = [];
+        for (let entry of education) {
             entry.id == entryID ?
-                newexperienceArray.push({ ...entry, "notes": [...entry.notes, { "id": crypto.randomUUID(), "content": "" }] }) :
-                newexperienceArray.push(entry);
+                newEducationArray.push({ ...entry, "notes": [...entry.notes, { "id": crypto.randomUUID(), "content": "" }] }) :
+                newEducationArray.push(entry);
         }
-        onFormChange(newexperienceArray);
+        onFormChange(newEducationArray);
     }
 
     function handleRemoveNoteClick(entryID, removedNoteID) {
-        let newexperienceArray = [];
-        for (let entry of experience) {
+        let newEducationArray = [];
+        for (let entry of education) {
             entry.id == entryID ?
-                newexperienceArray.push({ ...entry, "notes": entry.notes.filter(note => note.id != removedNoteID) }) :
-                newexperienceArray.push(entry);
+                newEducationArray.push({ ...entry, "notes": entry.notes.filter(note => note.id != removedNoteID) }) :
+                newEducationArray.push(entry);
         }
-        onFormChange(newexperienceArray);
+        onFormChange(newEducationArray);
     }
 
     function handleFormChange(entryID, changedElement) {
-        let newexperienceArray = [];
-        for (let entry of experience) {
+        let newEducationArray = [];
+        for (let entry of education) {
             if (entry.id != entryID) {
-                newexperienceArray.push(entry);
+                newEducationArray.push(entry);
             }
             else {
                 if (changedElement.name == "noteContent") {
-                    newexperienceArray.push({
+                    newEducationArray.push({
                         ...entry,
                         "notes": entry.notes.map(note =>
                             note.id == changedElement.dataset.id ?
@@ -40,28 +40,24 @@ export default function ExperienceEditor({ experience, onFormChange }) {
                         )
                     });
                 }
-                else if (changedElement.name == "isCurrentlyEmployed") {
-                    newexperienceArray.push({ ...entry, [changedElement.name]: changedElement.checked });
-                }
                 else {
-                    newexperienceArray.push({ ...entry, [changedElement.name]: changedElement.value });
+                    newEducationArray.push({ ...entry, [changedElement.name]: changedElement.value });
                 }
             }
         }
-        onFormChange(newexperienceArray);
+        onFormChange(newEducationArray);
     }
 
     function handleNewEntryClick() {
-        onFormChange([...experience, {
+        onFormChange([...education, {
             "id": crypto.randomUUID(),
-            "company": "Replace me",
+            "school": "Replace me",
             "location": "Replace me",
-            "title": "Replace me",
+            "degree": "Replace me",
             "startMonth": 1,
             "startYear": 1900,
             "endMonth": 1,
             "endYear": 1900,
-            "isCurrentlyEmployed": false,
             "notes": [
                 {
                     "id": crypto.randomUUID(),
@@ -72,7 +68,7 @@ export default function ExperienceEditor({ experience, onFormChange }) {
     }
 
     function handleRemoveEntryClick(entryID) {
-        onFormChange(experience.filter(entry => entry.id != entryID));
+        onFormChange(education.filter(entry => entry.id != entryID));
     }
 
     const months = [
@@ -81,28 +77,22 @@ export default function ExperienceEditor({ experience, onFormChange }) {
     ];
 
     return (
-        <div id="ExperienceEditor">
-            <CollapsibleBlock title={<h2>Experience</h2>}>
-                {experience.map((entry, index) => (
-                    <CollapsibleBlock title={<h3>{entry.company}</h3>} key={entry.id} initState={index == 0}>
+        <div id="EducationEditor">
+            <CollapsibleBlock title={<h2>Education</h2>} >
+                {education.map((entry, index) =>
+                    <CollapsibleBlock title={<h3>{entry.school}</h3>} key={entry.id} initState={index == 0}>
                         <form data-id={entry.id} onChange={e => handleFormChange(entry.id, e.target)}>
                             <label>
-                                Company:
-                                <input type="text" name="company" defaultValue={entry.company} />
+                                School:
+                                <input type="text" name="school" defaultValue={entry.school} />
                             </label>
                             <label>
                                 Location:
                                 <input type="text" name="location" defaultValue={entry.location} />
                             </label>
                             <label>
-                                Title:
-                                <input type="text" name="title" defaultValue={entry.title} />
-                            </label>
-                            <label>
-                                <div className="row">
-                                    Currently employed
-                                    <input type="checkbox" name="isCurrentlyEmployed" defaultChecked={entry.isCurrentlyEmployed}></input>
-                                </div>
+                                Degree:
+                                <input type="text" name="degree" defaultValue={entry.degree} />
                             </label>
                             <fieldset>
                                 <legend>Start date:</legend>
@@ -117,20 +107,19 @@ export default function ExperienceEditor({ experience, onFormChange }) {
                                     <input type="text" name="startYear" className="input-year" defaultValue={entry.startYear} />
                                 </div>
                             </fieldset>
-                            {!entry.isCurrentlyEmployed &&
-                                <fieldset>
-                                    <legend>End date:</legend>
-                                    <div className="row">
-                                        <select name="endMonth" defaultValue={entry.endMonth}>
-                                            {months.map((month, index) =>
-                                                <option key={index} value={index + 1}>
-                                                    {month}
-                                                </option>
-                                            )}
-                                        </select>
-                                        <input type="text" name="endYear" className="input-year" defaultValue={entry.endYear} />
-                                    </div>
-                                </fieldset>}
+                            <fieldset>
+                                <legend>End date:</legend>
+                                <div className="row">
+                                    <select name="endMonth" defaultValue={entry.endMonth}>
+                                        {months.map((month, index) =>
+                                            <option key={index} value={index + 1}>
+                                                {month}
+                                            </option>
+                                        )}
+                                    </select>
+                                    <input type="text" name="endYear" className="input-year" defaultValue={entry.endYear} />
+                                </div>
+                            </fieldset>
                             <fieldset>
                                 <legend>
                                     <div className="row">
@@ -150,7 +139,6 @@ export default function ExperienceEditor({ experience, onFormChange }) {
                         </form>
                         <button type="button" className="button-remove-entry" onClick={() => handleRemoveEntryClick(entry.id)}>Remove this entry</button>
                     </CollapsibleBlock>
-                )
                 )}
                 <button className="button-new-entry" onClick={handleNewEntryClick}>Add new entry</button>
             </CollapsibleBlock>

@@ -8,52 +8,23 @@
     padding: 0;
 }
 
-body {
-    font-family: "Cambria", serif;
-    font-size: 16px;
-    background-color: var(--body-background-color);
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-
-    width: 100%;
-
-    >* + * {
-        margin-top: 0.5lh;
-    }
-}
-
-label {
-    display: flex;
-    flex-direction: column;
-}
-
-fieldset {
-    border: none;
-}
-
 .App {
     display: grid;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 3fr 7fr;
     min-height: 100vh;
     padding: 1em;
     gap: 1em;
 }
 
-/* h1 {
-    font-size: 17px;
-}
-
-h2, h3 {
+body {
+    font-family: "Cambria", serif;
     font-size: 16px;
-} */
+    background-color: var(--body-background-color);
+    word-wrap: anywhere;
+}
 
 .row {
     display: flex;
     flex-direction: row;
     align-items: center;
-
-    gap: 1em;
 }

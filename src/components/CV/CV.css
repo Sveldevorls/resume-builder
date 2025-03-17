@@ -1,14 +1,12 @@
 .CV {
     width: 100%;
     aspect-ratio: 210/297;
-    padding: 1in;
+    padding: 5%;
 
     background-color: #fff;
-
-    /* Debug */
     border: 3px solid black;
 
-    >div + div {
+    >div+div {
         margin-top: 1lh;
     }
 }

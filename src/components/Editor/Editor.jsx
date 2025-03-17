@@ -1,9 +1,9 @@
-import InfoEditor from "./InfoEditor"
-import EducationEditor from "./EducationEditor"
-import ExperienceEditor from "./ExperienceEditor"
-import ProjectsEditor from "./ProjectsEditor"
-import SkillsEditor from "./SkillsEditor"
-import "../../styles/Editor.css"
+import InfoEditor from "./InfoEditor/InfoEditor"
+import EducationEditor from "./EducationEditor/EducationEditor"
+import ExperienceEditor from "./ExperienceEditor/ExperienceEditor"
+import ProjectsEditor from "./ProjectsEditor/ProjectsEditor"
+import SkillsEditor from "./SkillsEditor/SkillsEditor"
+import "./Editor.css"
 
 export default function Editor(props) {
     return (

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../styles/CollapsibleBlock.css"
+import "./CollapsibleBlock.css"
 
 export default function CollapsibleBlock({ title, initState=false, children }) {
     const [active, setActive] = useState(initState);

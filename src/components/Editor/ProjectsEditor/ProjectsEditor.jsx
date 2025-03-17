@@ -1,5 +1,5 @@
 import TextareaAutosize from 'react-textarea-autosize';
-import CollapsibleBlock from "./CollapsibleBlock"
+import CollapsibleBlock from "../CollapsibleBlock"
 import { Fragment } from 'react';
 
 export default function ProjectsEditor({ projects, onFormChange }) {

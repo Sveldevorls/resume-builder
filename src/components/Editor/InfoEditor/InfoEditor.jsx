@@ -1,4 +1,4 @@
-import CollapsibleBlock from "./CollapsibleBlock"
+import CollapsibleBlock from "../CollapsibleBlock"
 
 export default function InfoEditor({ info, onFormChange }) {
     function handleFormChange(updatedElement) {

@@ -1,9 +1,9 @@
-import Info from "./Info"
-import Education from "./Education"
-import Experience from "./Experience"
-import Projects from "./Projects"
-import Skills from "./Skills"
-import "../../styles/CV.css"
+import Info from "./Info/Info"
+import Education from "./Education/Education"
+import Experience from "./Experience/Experience"
+import Projects from "./Projects/Projects"
+import Skills from "./Skills/Skills"
+import "./CV.css"
 
 export default function CV(props) {
     return (

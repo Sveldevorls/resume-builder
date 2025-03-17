@@ -1,0 +1,92 @@
+.Editor {
+    font-family: "Roboto", sans-serif;
+
+    >div+div {
+        margin-top: 0.5lh;
+    }
+
+    .row {
+        gap: 1em;
+
+        >button {
+            margin-left: auto;
+        }
+    }
+
+    button {
+        background: none;
+        border: none;
+        border-radius: 0.5em;
+        padding: 0.5em;
+
+        &.button-remove-entry {
+            background-color: #e63535;
+            color: #F9F9FB;
+        }
+
+        &.button-new-entry {
+            background-color: #54A454;
+            color: #F9F9FB;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+
+        >*+* {
+            margin-top: 0.7lh;
+        }
+    }
+
+    input,
+    select {
+        height: 1.5lh;
+    }
+
+    input[type=text] {
+        width: 100%;
+        border-radius: 0.25lh;
+        border: 1px solid black;
+        padding-left: 0.5em;
+    }
+
+    input.input-year {
+        width: 5em;
+    }
+
+    textarea {
+        height: min-content;
+        width: 100%;
+        resize: none;
+    }
+
+    label {
+        display: flex;
+        flex-direction: column;
+    }
+
+    fieldset {
+        border: none;
+    }
+
+    legend {
+        width: 100%;
+
+        >.row {
+            margin-bottom: 0.5lh;
+        }
+    }
+
+    .note-grid {
+        display: grid;
+        grid-template-columns: 7fr 1fr;
+        row-gap: 0.5lh;
+    }
+}

@@ -7,11 +7,9 @@
         gap: 2em;
     }
 
-    span + span::before {
+    span+span::before {
         content: "|";
         position: relative;
         left: -1em;
     }
 }
-
-

@@ -1,5 +1,5 @@
 import TextareaAutosize from 'react-textarea-autosize';
-import CollapsibleBlock from "./CollapsibleBlock"
+import CollapsibleBlock from "../CollapsibleBlock"
 
 export default function SkillsEditor({ skills, onFormChange }) {
     function handleFormChange(entryID, changedElement) {
