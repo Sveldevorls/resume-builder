@@ -1,6 +1,7 @@
 import TextareaAutosize from 'react-textarea-autosize';
 import CollapsibleBlock from "../CollapsibleBlock"
 import { Fragment } from 'react';
+import ConfirmButton from '../ConfirmButton';
 
 export default function ExperienceEditor({ experience, onFormChange }) {
     function handleNewNoteClick(entryID) {
@@ -87,8 +88,8 @@ export default function ExperienceEditor({ experience, onFormChange }) {
     return (
         <div id="ExperienceEditor">
             <CollapsibleBlock title={<h2>Experience</h2>}>
-                {experience.map((entry, index) => (
-                    <CollapsibleBlock title={<h3>{entry.company}</h3>} key={entry.id} initState={index == 0}>
+                {experience.map(entry => (
+                    <CollapsibleBlock title={<h3>{entry.company}</h3>} key={entry.id} initState={false}>
                         <form data-id={entry.id} onChange={e => handleFormChange(entry.id, e.target)}>
                             <label>
                                 Company:
@@ -152,7 +153,14 @@ export default function ExperienceEditor({ experience, onFormChange }) {
                                 </div>
                             </fieldset>
                         </form>
-                        <button type="button" className="button-remove-entry" onClick={() => handleRemoveEntryClick(entry.id)}>Remove this entry</button>
+                        <ConfirmButton
+                            buttonClass="button-remove-entry"
+                            onConfirm={() => handleRemoveEntryClick(entry.id)}
+                            warningMessage={<h3>This action can not be reversed. Are you sure?</h3>}
+                            confirmMessage="Yes, remove this entry"
+                        >
+                            Remove this entry
+                        </ConfirmButton>
                     </CollapsibleBlock>
                 )
                 )}

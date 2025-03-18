@@ -7,11 +7,6 @@
     border-radius: var(--title-border-radius);
     width: 100%;
 
-    h2+button,
-    h3+button {
-        margin-left: auto;
-    }
-
     &.active {
         >.title {
             border-radius: var(--title-border-radius) var(--title-border-radius) 0 0;
@@ -44,6 +39,11 @@
         button {
             background: none;
             color: var(--title-text-color);
+        }
+
+        h2+button,
+        h3+button {
+            margin-left: auto;
         }
     }
 }

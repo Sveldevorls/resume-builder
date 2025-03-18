@@ -1,5 +1,6 @@
 import TextareaAutosize from 'react-textarea-autosize';
 import CollapsibleBlock from "../CollapsibleBlock"
+import ConfirmButton from '../ConfirmButton';
 
 export default function SkillsEditor({ skills, onFormChange }) {
     function handleFormChange(entryID, changedElement) {
@@ -34,9 +35,9 @@ export default function SkillsEditor({ skills, onFormChange }) {
     return (
         <div id="SkillsEditor">
             <CollapsibleBlock title={<h2>Skills</h2>} >
-                {skills.map((entry, index) => {
+                {skills.map(entry => {
                     return (
-                        <CollapsibleBlock title={<h3>{entry.title}</h3>} key={entry.id} initState={index == 0}>
+                        <CollapsibleBlock title={<h3>{entry.title}</h3>} key={entry.id} initState={false}>
                             <form data-id={entry.id} onChange={e => handleFormChange(entry.id, e.target)}>
                                 <label>
                                     Skill:
@@ -47,7 +48,14 @@ export default function SkillsEditor({ skills, onFormChange }) {
                                     <TextareaAutosize minRows="3" name="content" defaultValue={entry.content} />
                                 </label>
                             </form>
-                            <button type="button" className="button-remove-entry" onClick={() => handleRemoveEntryClick(entry.id)}>Remove this entry</button>
+                            <ConfirmButton
+                                buttonClass="button-remove-entry"
+                                onConfirm={() => handleRemoveEntryClick(entry.id)}
+                                warningMessage={<h3>This action can not be reversed. Are you sure?</h3>}
+                                confirmMessage="Yes, remove this entry"
+                            >
+                                Remove this entry
+                            </ConfirmButton>
                         </CollapsibleBlock>
                     )
                 })}

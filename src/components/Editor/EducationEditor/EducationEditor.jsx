@@ -1,6 +1,7 @@
 import TextareaAutosize from 'react-textarea-autosize';
 import CollapsibleBlock from "../CollapsibleBlock"
 import { Fragment } from 'react';
+import ConfirmButton from "../ConfirmButton";
 
 export default function EducationEditor({ education, onFormChange }) {
     function handleNewNoteClick(entryID) {
@@ -83,8 +84,8 @@ export default function EducationEditor({ education, onFormChange }) {
     return (
         <div id="EducationEditor">
             <CollapsibleBlock title={<h2>Education</h2>} >
-                {education.map((entry, index) =>
-                    <CollapsibleBlock title={<h3>{entry.school}</h3>} key={entry.id} initState={index == 0}>
+                {education.map(entry =>
+                    <CollapsibleBlock title={<h3>{entry.school}</h3>} key={entry.id} initState={false}>
                         <form data-id={entry.id} onChange={e => handleFormChange(entry.id, e.target)}>
                             <label>
                                 School:
@@ -141,7 +142,14 @@ export default function EducationEditor({ education, onFormChange }) {
                                 </div>
                             </fieldset>
                         </form>
-                        <button type="button" className="button-remove-entry" onClick={() => handleRemoveEntryClick(entry.id)}>Remove this entry</button>
+                        <ConfirmButton
+                            buttonClass="button-remove-entry"
+                            onConfirm={() => handleRemoveEntryClick(entry.id)}
+                            warningMessage={<h3>This action can not be reversed. Are you sure?</h3>}
+                            confirmMessage="Yes, remove this entry"
+                        >
+                            Remove this entry
+                        </ConfirmButton>
                     </CollapsibleBlock>
                 )}
                 <button className="button-new-entry" onClick={handleNewEntryClick}>Add new entry</button>
