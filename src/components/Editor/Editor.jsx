@@ -4,8 +4,8 @@ import EducationEditor from "./EducationEditor/EducationEditor"
 import ExperienceEditor from "./ExperienceEditor/ExperienceEditor"
 import ProjectsEditor from "./ProjectsEditor/ProjectsEditor"
 import SkillsEditor from "./SkillsEditor/SkillsEditor"
+import ConfirmButton from "./ConfirmButton";
 import "./Editor.css"
-
 
 export default function Editor(props) {
     function handleDownloadClick() {
@@ -21,6 +21,14 @@ export default function Editor(props) {
                 width: 595,
             }
         )
+    }
+
+    function handleClearResumeClick() {
+        props.onInfoFormChange({});
+        props.onEducationFormChange([]);
+        props.onExperienceFormChange([]);
+        props.onProjectsFormChange([]);
+        props.onSkillsFormChange([]);
     }
 
     return (
@@ -45,6 +53,14 @@ export default function Editor(props) {
                 skills={props.skills}
                 onFormChange={props.onSkillsFormChange}
             />
+            <ConfirmButton
+                buttonClass="button-clear"
+                onConfirm={handleClearResumeClick}
+                warningMessage={<h3>This action can not be reversed. Are you sure?</h3>}
+                confirmMessage="Yes, clear the resume"
+            >
+                <h3>Clear resume</h3>
+            </ConfirmButton>
             <button className="button-download" onClick={handleDownloadClick}><h3>Download as PDF</h3></button>
         </div>
     )

@@ -18,7 +18,6 @@
     }
 
     button {
-        background: none;
         border: none;
         border-radius: 0.5em;
         padding: 0.5em;
@@ -35,7 +34,15 @@
 
         &.button-download {
             height: 3em;
+            width: 12em;
             background-color: #54A454;
+            color: #F9F9FB;
+        }
+
+        &.button-clear {
+            height: 3em;
+            width: 12em;
+            background-color: #e63535;
             color: #F9F9FB;
         }
 

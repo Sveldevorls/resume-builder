@@ -42,6 +42,7 @@
         padding: 0.25lh 0 0.25lh 0.5em;
 
         button {
+            background: none;
             color: var(--title-text-color);
         }
     }
