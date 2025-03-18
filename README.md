@@ -1,4 +1,4 @@
-# CV Builder
+# Resume Builder
 
 TOP > React Course > Project: CV Application  
 Original page at https://www.theodinproject.com/lessons/node-path-react-new-cv-application  
