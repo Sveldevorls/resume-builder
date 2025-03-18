@@ -4,9 +4,12 @@
     padding: 5%;
 
     background-color: #fff;
-    border: 3px solid black;
-
+    
     >div+div {
         margin-top: 1lh;
     }
+}
+
+.CV-outer {
+    border: 3px solid black;
 }

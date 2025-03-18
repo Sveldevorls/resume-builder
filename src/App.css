@@ -17,7 +17,6 @@
 }
 
 body {
-    font-family: "Cambria", serif;
     font-size: 16px;
     background-color: var(--body-background-color);
     word-wrap: anywhere;

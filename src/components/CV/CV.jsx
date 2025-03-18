@@ -7,12 +7,14 @@ import "./CV.css"
 
 export default function CV(props) {
     return (
-        <div className="CV">
-            <Info info={props.info} />
-            <Education education={props.education} />
-            <Experience experience={props.experience} />
-            <Projects projects={props.projects} />
-            <Skills skills={props.skills} />
+        <div className="CV-outer">
+            <div className="CV">
+                <Info info={props.info} />
+                <Education education={props.education} />
+                <Experience experience={props.experience} />
+                <Projects projects={props.projects} />
+                <Skills skills={props.skills} />
+            </div>
         </div>
     )
 }

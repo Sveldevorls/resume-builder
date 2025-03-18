@@ -9,4 +9,8 @@
         padding-left: 1em;
         list-style-type: none;
     }
+
+    h3 {
+        display: inline;
+    }
 }
