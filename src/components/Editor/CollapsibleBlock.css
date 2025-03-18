@@ -1,6 +1,7 @@
 .CollapsibleBlock {
     --title-border-radius: 0.5em;
     --title-background-color: #1565c0;
+    --title-background-color-secondary: #18169e;
     --title-text-color: #F9F9FB;
 
     border: 1px solid black;
@@ -44,6 +45,12 @@
         h2+button,
         h3+button {
             margin-left: auto;
+        }
+    }
+
+    .CollapsibleBlock {
+        >.title {
+            background: var(--title-background-color-secondary);
         }
     }
 }

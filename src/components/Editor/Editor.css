@@ -79,9 +79,9 @@
     }
 
     textarea {
-        height: min-content;
         width: 100%;
         resize: none;
+        overflow-y: hidden;
     }
 
     label {
@@ -105,5 +105,6 @@
         display: grid;
         grid-template-columns: 7fr 1fr;
         row-gap: 0.5lh;
+        column-gap: 0.5em;
     }
 }
