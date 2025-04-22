@@ -14,6 +14,11 @@
     min-height: 100vh;
     padding: 1em;
     gap: 1em;
+
+    @media (width < 950px) {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 body {

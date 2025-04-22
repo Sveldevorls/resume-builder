@@ -3,6 +3,8 @@
     aspect-ratio: 210/297;
     padding: 5%;
 
+    font-family: 'Times New Roman', Times, serif;
+
     background-color: #fff;
     
     >div+div {
@@ -11,5 +13,6 @@
 }
 
 .CV-outer {
+    aspect-ratio: 210/297;
     border: 3px solid black;
 }
