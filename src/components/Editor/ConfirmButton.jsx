@@ -1,26 +1,18 @@
-import { useState } from "react";
-import "./ConfirmButton.css"
+import { useContext } from "react";
+import { DialogContext } from "../../App";
 
-export default function ConfirmButton({ buttonClass, warningMessage, confirmMessage = "Confirm", cancelMessage = "Cancel", onConfirm, children }) {
-    const [active, setActive] = useState(false);
+export default function ConfirmButton({ buttonClass, messageStrings, onConfirm, children }) {
+    const { dialogRef, setDialogMessageStrings, setOnDialogConfirm } = useContext(DialogContext);
 
-    function handleConfirmClick() {
-        onConfirm();
-        setActive(false);
+    function handleButtonClick() {
+        dialogRef.current.showModal();
+        setDialogMessageStrings(messageStrings);
+        setOnDialogConfirm(() => onConfirm);
     }
 
     return (
-        <>
-            <button onClick={() => setActive(!active)} className={buttonClass}>
-                {children}
-            </button>
-            {active &&
-                <div className="confirm-inner">
-                    {warningMessage}
-                    <button onClick={handleConfirmClick}>{confirmMessage}</button>
-                    <button onClick={() => setActive(false)}>{cancelMessage}</button>
-                </div>
-            }
-        </>
+        <button onClick={handleButtonClick} className={buttonClass}>
+            {children}
+        </button>
     )
 }

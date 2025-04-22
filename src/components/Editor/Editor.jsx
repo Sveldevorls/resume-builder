@@ -55,9 +55,12 @@ export default function Editor(props) {
             />
             <ConfirmButton
                 buttonClass="button-clear"
+                messageStrings={[
+                    `You are about to clear the entire resume.`,
+                    "This action can not be reversed.",
+                    "Are you sure?",
+                ]}
                 onConfirm={handleClearResumeClick}
-                warningMessage={<h3>This action can not be reversed. Are you sure?</h3>}
-                confirmMessage="Yes, clear the resume"
             >
                 <h3>Clear resume</h3>
             </ConfirmButton>

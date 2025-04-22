@@ -144,9 +144,12 @@ export default function EducationEditor({ education, onFormChange }) {
                         </form>
                         <ConfirmButton
                             buttonClass="button-remove-entry"
+                            messageStrings={[
+                                `You are about to remove "${entry.school}" from this section.`,
+                                "This action can not be reversed.",
+                                "Are you sure?",
+                            ]}
                             onConfirm={() => handleRemoveEntryClick(entry.id)}
-                            warningMessage={<h3>This action can not be reversed. Are you sure?</h3>}
-                            confirmMessage="Yes, remove this entry"
                         >
                             Remove this entry
                         </ConfirmButton>

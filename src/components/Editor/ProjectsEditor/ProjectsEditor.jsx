@@ -105,9 +105,12 @@ export default function ProjectsEditor({ projects, onFormChange }) {
                             </form>
                             <ConfirmButton
                                 buttonClass="button-remove-entry"
+                                messageStrings={[
+                                    `You are about to remove "${entry.title}" from this section.`,
+                                    "This action can not be reversed.",
+                                    "Are you sure?",
+                                ]}
                                 onConfirm={() => handleRemoveEntryClick(entry.id)}
-                                warningMessage={<h3>This action can not be reversed. Are you sure?</h3>}
-                                confirmMessage="Yes, remove this entry"
                             >
                                 Remove this entry
                             </ConfirmButton>

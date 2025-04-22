@@ -155,9 +155,12 @@ export default function ExperienceEditor({ experience, onFormChange }) {
                         </form>
                         <ConfirmButton
                             buttonClass="button-remove-entry"
+                            messageStrings={[
+                                `You are about to remove "${entry.company}" from this section.`,
+                                "This action can not be reversed.",
+                                "Are you sure?",
+                            ]}
                             onConfirm={() => handleRemoveEntryClick(entry.id)}
-                            warningMessage={<h3>This action can not be reversed. Are you sure?</h3>}
-                            confirmMessage="Yes, remove this entry"
                         >
                             Remove this entry
                         </ConfirmButton>
