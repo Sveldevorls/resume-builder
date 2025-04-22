@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from "react";
 import {
     defaultInfo,
     defaultEducation,
@@ -12,11 +12,12 @@ import './App.css'
 
 
 export default function App() {
-    const [info, setInfo] = useState(JSON.parse(localStorage.getItem("info")) || defaultInfo);
-    const [education, setEducation] = useState(JSON.parse(localStorage.getItem("education")) || defaultEducation);
-    const [experience, setExperience] = useState(JSON.parse(localStorage.getItem("experiences")) || defaultExperience);
-    const [projects, setProjects] = useState(JSON.parse(localStorage.getItem("projects")) || defaultProjects);
-    const [skills, setSkills] = useState(JSON.parse(localStorage.getItem("skills")) || defaultSkills);
+    const [info, setInfo] = useState(JSON.parse(localStorage.getItem("info")) ?? defaultInfo);
+    const [education, setEducation] = useState(JSON.parse(localStorage.getItem("education")) ?? defaultEducation);
+    const [experience, setExperience] = useState(JSON.parse(localStorage.getItem("experiences")) ?? defaultExperience);
+    const [projects, setProjects] = useState(JSON.parse(localStorage.getItem("projects")) ?? defaultProjects);
+    const [skills, setSkills] = useState(JSON.parse(localStorage.getItem("skills")) ?? defaultSkills);
+
 
     function handleFormChange(key, stateSetter) {
         return (newState) => {
