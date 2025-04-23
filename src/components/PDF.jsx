@@ -55,7 +55,7 @@ export default function MyDocument({ info, education, experience, projects, skil
 }
 
 function InfoSection({ content }) {
-    const infoDetails = [content.location, content.phone, content.email].filter(entry => entry != "").join("  |  ");
+    const infoDetails = [content.location, content.phone, content.email].filter(entry => entry != undefined).join("  |  ");
 
     return (
         <View style={{textAlign: "center"}}>
