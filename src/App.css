@@ -28,29 +28,46 @@ body {
 }
 
 .dialog {
-    padding: 2em;
-    text-align: center;
+    min-width: min(100%, 15em);
+    padding: 1em;
+
+    font-family: "Roboto", sans-serif;
     font-size: 1.2rem;
+    text-align: center;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1em;
 
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(249, 191, 56);
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
 }
 
 .dialog-buttons {
-    margin-top: 1em;
-
     display: flex;
-    gap: 1em;
+    flex-direction: column;
+    gap: 0.5em;
 }
 
 .dialog-buttons button {
     padding: 0.5em;
+    min-width: 10em;
+    font-size: 1.1rem;
+    
+    background-color: #f3f3f3;
+    border: none;
+    border-radius: 5px;
 }
 
 
@@ -62,4 +79,12 @@ dialog:not([open]) {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+button {
+    transition: filter 0.1s ease-in-out;
+
+    &:hover {
+        filter: brightness(0.9);
+    }
 }

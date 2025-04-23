@@ -31,8 +31,9 @@ export default function App() {
     }
 
     return (
-        <DialogContext.Provider value={{ dialogRef, setDialogMessageStrings, setOnDialogConfirm }}>
-            <div className="App">
+
+        <div className="App">
+            <DialogContext.Provider value={{ dialogRef, setDialogMessageStrings, setOnDialogConfirm }}>
                 <Editor
                     info={info}
                     onInfoFormChange={handleFormChange("info", setInfo)}
@@ -45,31 +46,32 @@ export default function App() {
                     skills={skills}
                     onSkillsFormChange={handleFormChange("skills", setSkills)}
                 />
-                <CV
-                    info={info}
-                    education={education}
-                    experience={experience}
-                    projects={projects}
-                    skills={skills}
-                />
-                <dialog ref={dialogRef} className="dialog">
-                    {dialogMessageStrings.map((message, index) =>
-                        <Fragment key={index}>
-                            {!!index && <br />}
-                            {message}
-                        </Fragment>
-                    )}
-                    <div className="dialog-buttons">
-                        <button onClick={() => dialogRef.current.close()}>Cancel</button>
-                        <button onClick={() => {
-                            onDialogConfirm();
-                            dialogRef.current.close();
-                        }}>
-                            Yes, continue
-                        </button>
-                    </div>
-                </dialog>
-            </div>
-        </DialogContext.Provider>
+            </DialogContext.Provider>
+            <CV
+                info={info}
+                education={education}
+                experience={experience}
+                projects={projects}
+                skills={skills}
+            />
+            <dialog ref={dialogRef} className="dialog">
+                {dialogMessageStrings.map((message, index) =>
+                    <Fragment key={index}>
+                        {!!index && <br />}
+                        {message}
+                    </Fragment>
+                )}
+                <div className="dialog-buttons">
+                    <button onClick={() => dialogRef.current.close()}>Cancel</button>
+                    <button onClick={() => {
+                        onDialogConfirm();
+                        dialogRef.current.close();
+                    }}>
+                        Yes, continue
+                    </button>
+                </div>
+            </dialog>
+        </div>
+
     )
 }
