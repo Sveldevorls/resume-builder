@@ -1,10 +1,14 @@
 # Resume Builder
+A simple resume builder that uses the Harvard resume template format
+Live demo at https://sveldevorls-resume-builder.vercel.app/  
 
-TOP > React Course > Project: CV Application  
-Original page at https://www.theodinproject.com/lessons/node-path-react-new-cv-application  
-Live preview at https://sveldevorls-cv-app.vercel.app/
+## Built with
+- React.js — website structure
+- React-pdf — resume download feature
 
-# Features  
+## Features
 - Live update and preview
-- Local data storage
-- Download as PDF
+- Download resume as PDF with React-pdf
+
+## Screenshot
+![](https://github.com/Sveldevorls/resume-builder/blob/main/screenshots/8MepXPGhfA.png)
