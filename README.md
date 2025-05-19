@@ -1,5 +1,5 @@
 # Resume Builder
-A simple resume builder that uses the Harvard resume template format
+A simple resume builder that uses the Harvard resume template format  
 Live demo at https://sveldevorls-resume-builder.vercel.app/  
 
 ## Built with
